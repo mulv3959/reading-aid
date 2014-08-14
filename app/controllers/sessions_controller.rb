@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :set_user, only: [:new, :create]
 
   def new
   end
@@ -8,7 +9,7 @@ class SessionsController < ApplicationController
     user = authenticate_session(session_params)
 
     if sign_in(user)
-      redirect_to root_path
+      redirect_to "/user/profile"
     else
       render :new
     end

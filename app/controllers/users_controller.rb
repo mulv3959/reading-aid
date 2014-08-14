@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :set_user, only: [:new, :create]
 
   def new
     @user = User.new
@@ -10,16 +11,19 @@ class UsersController < ApplicationController
 
     if @user.valid?
       sign_in(@user)
-      redirect_to root_path
+      redirect_to '/user/profile'
     else
       render :new
     end
   end
 
+  def profile
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :first_name, :last_name)
   end
 end
 

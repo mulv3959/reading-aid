@@ -1,0 +1,9 @@
+<h1> <%= @user.first_name %> </h1>
+
+<%= link_to "Add a List", new_list_path %>
+<%=
+   link_to_if(@user.lists != 0, "My Lists", { controller: "lists", action: "user_lists" }) do |name|
+     link_to("Start!", { controller: "lists", action: "new" })
+   end
+%>
+<%= link_to "Public Lists", lists_path %>
