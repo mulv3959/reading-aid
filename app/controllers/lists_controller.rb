@@ -77,4 +77,5 @@ class ListsController < ApplicationController
       params[:list][:user_id] = @user.id
       params.require(:list).permit(:title, :description, :public, :user_id)
     end
+
 end

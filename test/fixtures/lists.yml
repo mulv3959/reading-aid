@@ -4,8 +4,3 @@ one:
   title: MyString
   description: MyText
   public: false
-
-two:
-  title: MyString
-  description: MyText
-  public: false
